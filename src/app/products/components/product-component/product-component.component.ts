@@ -12,4 +12,7 @@ export class ProductComponentComponent implements OnInit {
   ngOnInit() {
   }
 
+  onBuy() {
+    console.log('click onBuy');
+  }
 }
