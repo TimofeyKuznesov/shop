@@ -1,0 +1,12 @@
+
+<div>Cart list</div>
+<div *ngIf="carts.length; else cartsEmpty">
+    <ul *ngFor="let cart of carts">
+        <li>
+            {{cart.createDate}} {{cart.product.name}}
+        </li>
+    </ul>
+</div>
+<ng-template #cartsEmpty>
+    You are not select product
+</ng-template>
