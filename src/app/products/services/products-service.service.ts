@@ -7,14 +7,12 @@ import {ProductModel, Categories} from '../models';
 })
 export class ProductsServiceService {
 
-  private products: Array<ProductModel>;
-
-  constructor() { }
+  private products: Array<ProductModel> = [
+    new ProductModel('test1', 'tes1 for example', 1, Categories.ALL, true),
+    new ProductModel('test12', 'tes2 for example', 1, Categories.OTHER, true),
+  ];
 
   getProducts() {
-    return [
-      new ProductModel('test1', 'tes1 for example', 1, Categories.ALL, true),
-      new ProductModel('test12', 'tes2 for example', 1, Categories.OTHER, true),
-    ];
+    return this.products;
   }
 }

@@ -9,7 +9,8 @@ import { ProductModel } from '../../models';
 })
 export class ProductListComponentComponent implements OnInit {
 
-  private products: Array<ProductModel>;
+  products: Array<ProductModel>; // то, что используется в шаблоне, должно быть публичным
+
   constructor(
       private productsServiceService: ProductsServiceService,
     ) { }

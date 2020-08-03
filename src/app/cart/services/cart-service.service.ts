@@ -9,6 +9,7 @@ export class CartServiceService {
 
   constructor(private productsServiceService: ProductsServiceService) { }
 
+  // обычно ассортимент магазина и покупки - это разные списки товаров
   getCarts() {
     return this.productsServiceService.getProducts().map(
       product => new CartModel(product)
