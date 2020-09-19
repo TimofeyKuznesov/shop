@@ -1,16 +1,19 @@
-
-<div *ngIf="cartsInfo.total; else cartsEmpty">
-    <div class="row">total products: {{cartsInfo.total}}</div>
-    <div class="row">sum: {{cartsInfo.totalSum}}</div>
-    <ng-container  *ngFor="let cart of cartsInfo.carts">
+<div class="card">
+    <div class="card-header">
+        <div *ngIf="cartsInfo.total; else cartsEmpty">
+            <div class="row">total products: {{cartsInfo.total}}</div>
+            <div class="row">sum: {{cartsInfo.totalSum}}</div>
+        </div>
+        <ng-template #cartsEmpty>
+            You are not select product
+        </ng-template>
+    </div>
+    <div class="card-body"  *ngFor="let cart of cartsInfo.carts">
         <app-cart-component 
         [cart]="cart"
         (removeCart)="onRemoveCart($event)"
         (addProduct)="onAddProduct($event)"
         (removeProduct)="onRemoveProduct($event)"
         ></app-cart-component>
-    </ng-container>
+    </div>
 </div>
-<ng-template #cartsEmpty>
-    You are not select product
-</ng-template>
