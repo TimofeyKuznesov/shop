@@ -4,6 +4,7 @@ import { Observable, Subscription } from 'rxjs';
 
 import { CartServiceService } from '../../services';
 import { CartModel } from '../../models';
+import { CartsInfoModel } from '../../models/carts-info';
 
 @Component({
   selector: 'app-cart-list-component',
@@ -13,25 +14,22 @@ import { CartModel } from '../../models';
 })
 export class CartListComponentComponent implements OnInit, OnDestroy {
 
-  carts: Array<CartModel> = [];
+  cartsInfo: CartsInfoModel = new CartsInfoModel([]);
   private cartSub: Subscription;
 
   constructor(private cartServiceService: CartServiceService, private changeDetectorRef: ChangeDetectorRef) { }
 
   ngOnInit() {
-    this.cartSub = this.cartServiceService.channel$.subscribe(carts => this.updateCarts(carts));
+    this.cartSub = this.cartServiceService.channel$.subscribe(cartsInfo => this.updateCartsInfo(cartsInfo));
   }
 
   ngOnDestroy(): void {
     this.cartSub.unsubscribe();
   }
 
-  updateCarts(carts: Array<CartModel>){
-    this.carts = carts;
+  updateCartsInfo(cartsInfo: CartsInfoModel){
+    this.cartsInfo = cartsInfo;
     this.changeDetectorRef.detectChanges();
   }
 
-  get totalSum() {
-    return this.carts.map(({product: {price}}: CartModel) => price).reduce( (acc, price) => acc + price, 0);
-  }
 }

@@ -1,8 +1,8 @@
 
-<div *ngIf="carts.length; else cartsEmpty">
-    <div class="row">total products: {{carts.length}}</div>
-    <div class="row">sum: {{totalSum}}</div>
-    <ng-container  *ngFor="let cart of carts">
+<div *ngIf="cartsInfo.total; else cartsEmpty">
+    <div class="row">total products: {{cartsInfo.total}}</div>
+    <div class="row">sum: {{cartsInfo.totalSum}}</div>
+    <ng-container  *ngFor="let cart of cartsInfo.carts">
         <app-cart-component [cart]="cart" ></app-cart-component>
     </ng-container>
 </div>
