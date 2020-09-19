@@ -26,4 +26,9 @@ export class CartServiceService {
     this.channel.next(this.cartsInfo);
   }
 
+  removeCart(removeCart: CartModel) {
+    this.cartsInfo = new CartsInfoModel(this.cartsInfo.carts.filter(cart => cart !== removeCart));
+    this.channel.next(this.cartsInfo);
+  }
+
 }

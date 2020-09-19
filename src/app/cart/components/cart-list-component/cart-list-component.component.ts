@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
 
 import { Observable, Subscription } from 'rxjs';
 
@@ -32,4 +32,7 @@ export class CartListComponentComponent implements OnInit, OnDestroy {
     this.changeDetectorRef.detectChanges();
   }
 
+  onRemoveCart(removeCart: CartModel) {
+    this.cartServiceService.removeCart(removeCart);
+  }
 }

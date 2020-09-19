@@ -3,7 +3,7 @@
     <div class="row">total products: {{cartsInfo.total}}</div>
     <div class="row">sum: {{cartsInfo.totalSum}}</div>
     <ng-container  *ngFor="let cart of cartsInfo.carts">
-        <app-cart-component [cart]="cart" ></app-cart-component>
+        <app-cart-component [cart]="cart" (removeCart)="onRemoveCart($event)"></app-cart-component>
     </ng-container>
 </div>
 <ng-template #cartsEmpty>
