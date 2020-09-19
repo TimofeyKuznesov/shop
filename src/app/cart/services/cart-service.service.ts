@@ -22,7 +22,21 @@ export class CartServiceService {
   constructor(private productsServiceService: ProductsServiceService) { }
 
   addProduct(product: ProductModel) {
-    this.cartsInfo = new CartsInfoModel([...this.cartsInfo.carts, new CartModel(product)]);
+    const updateCart = this.cartsInfo.carts.find( cart => cart.product === product);
+    if(updateCart){
+      this.cartsInfo = new CartsInfoModel(this.cartsInfo.carts.map(
+         cart => cart.product !== product ? cart : {...cart, count: cart.count + 1}
+         ));
+    } else {
+      this.cartsInfo = new CartsInfoModel([...this.cartsInfo.carts, new CartModel(product)]);
+    }
+    this.channel.next(this.cartsInfo);
+  }
+
+  removeProduct(removeProduct: ProductModel) {
+    this.cartsInfo = new CartsInfoModel(this.cartsInfo.carts.map(
+      cart => cart.product !== removeProduct ? cart : {...cart, count: cart.count - 1}
+      ).filter( ({count}) => count > 0));
     this.channel.next(this.cartsInfo);
   }
 

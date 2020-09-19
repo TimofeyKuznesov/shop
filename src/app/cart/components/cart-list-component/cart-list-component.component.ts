@@ -2,6 +2,8 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy
 
 import { Observable, Subscription } from 'rxjs';
 
+import { ProductModel } from 'src/app/products/models';
+
 import { CartServiceService } from '../../services';
 import { CartModel } from '../../models';
 import { CartsInfoModel } from '../../models/carts-info';
@@ -34,5 +36,12 @@ export class CartListComponentComponent implements OnInit, OnDestroy {
 
   onRemoveCart(removeCart: CartModel) {
     this.cartServiceService.removeCart(removeCart);
+  }
+
+  onAddProduct(addProduct: ProductModel) {
+    this.cartServiceService.addProduct(addProduct);
+  }
+  onRemoveProduct(removeProduct: ProductModel) {
+    this.cartServiceService.removeProduct(removeProduct);
   }
 }

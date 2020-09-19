@@ -1,7 +1,12 @@
 <div class="card">
     <div class="card-body">
         <h5 class="card-title">{{cart.product.name}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">count: {{cart.count}}</h6>
         <p class="card-text">{{cart.product.description}}</p>
-        <button type="button" class="btn btn-primary" (click)="onRemoveCart(cart)">Remove</button>
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-primary" (click)="onAddProduct(cart.product)">Increase</button>
+            <button type="button" class="btn btn-primary" (click)="onRemoveProduct(cart.product)">Decrease</button>
+            <button type="button" class="btn btn-primary" (click)="onRemoveCart(cart)">Remove All</button>
+        </div>
     </div>
 </div>
