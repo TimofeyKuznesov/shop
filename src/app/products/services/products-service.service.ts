@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 
+import * as faker from 'faker';
+
 import {ProductModel, Categories} from '../models';
 
 @Injectable({
@@ -9,12 +11,17 @@ export class ProductsServiceService {
 
   private products: Array<ProductModel>;
 
-  constructor() { }
+  constructor() {
+    this.products = Array(10).fill(0).map( () => new ProductModel(
+      faker.commerce.productName(),
+      faker.commerce.product(),
+      +faker.commerce.price(),
+      Categories.ALL,
+      true
+    ));
+  }
 
   getProducts() {
-    return [
-      new ProductModel('test1', 'tes1 for example', 1, Categories.ALL, true),
-      new ProductModel('test12', 'tes2 for example', 1, Categories.OTHER, true),
-    ];
+    return this.products;
   }
 }
