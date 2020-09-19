@@ -81,7 +81,7 @@ module.exports = {
             {
               "pattern": "@angular/**",
               "group": "external",
-              "position": "after"
+              "position": "before"
             }
           ],
           "pathGroupsExcludedImportTypes": ["builtin"]
