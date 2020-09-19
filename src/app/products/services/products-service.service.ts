@@ -17,7 +17,7 @@ export class ProductsServiceService {
       faker.commerce.product(),
       +faker.commerce.price(),
       Categories.ALL,
-      true
+      Math.random() >= 0.5
     ));
   }
 
