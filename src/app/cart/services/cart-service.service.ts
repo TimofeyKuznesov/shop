@@ -1,8 +1,9 @@
 import { Injectable, OnInit } from '@angular/core';
 
-import { ProductModel } from 'src/app/products/models';
 
 import { Subject } from 'rxjs';
+
+import { ProductModel } from 'src/app/products/models';
 
 import { CartModel } from '../models';
 import { ProductsServiceService } from '../../products/services';

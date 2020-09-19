@@ -82,9 +82,13 @@ module.exports = {
               "pattern": "@angular/**",
               "group": "external",
               "position": "before"
+            },
+            {
+              "pattern": "src/**",
+              "group": "external",
+              "position": "after"
             }
           ],
-          "pathGroupsExcludedImportTypes": ["builtin"]
         }]
       },
     },
@@ -146,4 +150,12 @@ module.exports = {
       extends: ['plugin:@angular-eslint/template/process-inline-templates'],
     },
   ],
+  settings: {
+    'import/resolver': {
+        node: {
+            extensions: ['.ts', '.tsx'],
+            moduleDirectory: ['node_modules', './'],
+        },
+    },
+}
 };
