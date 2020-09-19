@@ -12,6 +12,7 @@ import { ProductListComponentComponent } from './products/components/product-lis
 import { CartListComponentComponent } from './cart/components/cart-list-component/cart-list-component.component';
 import { CartModule } from './cart/cart.module';
 import { ProductsModule } from './products/products.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -21,8 +22,9 @@ import { ProductsModule } from './products/products.module';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    SharedModule,
     CartModule,
-    ProductsModule
+    ProductsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
