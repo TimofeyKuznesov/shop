@@ -1,4 +1,9 @@
 import { Injectable, OnInit } from '@angular/core';
+
+import { ProductModel } from 'src/app/products/models';
+
+import { Subject } from 'rxjs';
+
 import { CartModel } from '../models';
 import { ProductsServiceService } from '../../products/services';
 
@@ -7,12 +12,15 @@ import { ProductsServiceService } from '../../products/services';
 })
 export class CartServiceService {
 
+  private carts: Array<CartModel> = [];
+  private channel = new Subject<Array<CartModel>>();
+  channel$ = this.channel.asObservable();
+
   constructor(private productsServiceService: ProductsServiceService) { }
 
-  getCarts() {
-    return this.productsServiceService.getProducts().map(
-      product => new CartModel(product)
-    );
+  addProduct(product: ProductModel) {
+    this.carts = [...this.carts, new CartModel(product)];
+    this.channel.next(this.carts);
   }
 
 }

@@ -10,19 +10,19 @@ import { FirstComponentComponent } from './first-component/first-component.compo
 import { ProductComponentComponent } from './products/components/product-component/product-component.component';
 import { ProductListComponentComponent } from './products/components/product-list-component/product-list-component.component';
 import { CartListComponentComponent } from './cart/components/cart-list-component/cart-list-component.component';
+import { CartModule } from './cart/cart.module';
+import { ProductsModule } from './products/products.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    FirstComponentComponent,
-    ProductComponentComponent,
-    ProductListComponentComponent,
-    CartListComponentComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    CartModule,
+    ProductsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

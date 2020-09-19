@@ -1,11 +1,10 @@
 
-<div>Cart list</div>
 <div *ngIf="carts.length; else cartsEmpty">
-    <ul *ngFor="let cart of carts">
-        <li>
-            {{cart.createDate}} {{cart.product.name}}
-        </li>
-    </ul>
+    <div class="row">total products: {{carts.length}}</div>
+    <div class="row">sum: {{totalSum}}</div>
+    <ng-container  *ngFor="let cart of carts">
+        <app-cart-component [cart]="cart" ></app-cart-component>
+    </ng-container>
 </div>
 <ng-template #cartsEmpty>
     You are not select product
