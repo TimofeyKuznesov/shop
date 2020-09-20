@@ -8,7 +8,7 @@ import { GeneratorService } from './services/generator.service';
 @NgModule({
   declarations: [],
   providers: [
-    {provide: ConstantsService, useValue: CONSTANT_TOKEN},
+    {provide: CONSTANT_TOKEN, useValue: ConstantsService},
     {provide: GENERATOR_TOKEN, useFactory: GeneratorFactory(10), deps: [GeneratorService]}
   ],
   imports: [

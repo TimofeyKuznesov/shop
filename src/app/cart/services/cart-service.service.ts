@@ -24,7 +24,7 @@ export class CartServiceService {
 
   addProduct(product: ProductModel, quantity: number = 1) {
     const updateCart = this.cartProducts.find( cart => cart.product === product);
-    if(updateCart){
+    if (updateCart){
       this.cartProducts = this.cartProducts.map(
          cart => cart.product !== product ? cart : {...cart, count: cart.count + quantity}
          );
