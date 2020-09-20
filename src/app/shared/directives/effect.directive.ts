@@ -12,7 +12,7 @@ export class EffectDirective {
 
   @HostListener('click') onClick() {
     console.log('click');
-    if(this.appliedEffect){
+    if (this.appliedEffect){
       this.classNames.forEach(name => this.renderer2.removeClass(this.elementRef.nativeElement, name));
     } else {
       this.classNames.forEach(name => this.renderer2.addClass(this.elementRef.nativeElement, name));

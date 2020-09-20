@@ -13,3 +13,7 @@
 12. Implement add product to cart list
 13. Implement remove cart, increase and decrease product count in card.
 14. Add directive for highlight cart.
+
+15. Update CartService
+16. Create LocalStorageService, ConfigOptionsService, ConstantsService, GeneratorService 
+17. Add AboutComponent  and add effect to Application Info by click
