@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+
+import { Observable } from 'rxjs';
 
 import { CartServiceService } from 'src/app/cart/services';
 
@@ -13,14 +15,15 @@ import { ProductModel } from '../../models';
 })
 export class ProductListComponentComponent implements OnInit {
 
-  products: Array<ProductModel>;
+  products$: Observable<Array<ProductModel>>;
   constructor(
-      private productsServiceService: ProductsServiceService,
-      private cartServiceService: CartServiceService
+      public productsServiceService: ProductsServiceService,
+      private cartServiceService: CartServiceService,
+      private changeDetectorRef: ChangeDetectorRef
     ) { }
 
   ngOnInit() {
-    this.products = this.productsServiceService.getProducts();
+    this.products$ = this.productsServiceService.channel$;
   }
 
   onAddProduct(product: ProductModel) {
