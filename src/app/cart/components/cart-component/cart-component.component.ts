@@ -13,24 +13,24 @@ import {CartModel} from '../../models';
 export class CartComponentComponent implements OnInit {
 
   @Input() cart: CartModel;
-  @Output() removeCart: EventEmitter<CartModel> = new EventEmitter<CartModel>();
-  @Output() addProduct: EventEmitter<ProductModel> = new EventEmitter<ProductModel>();
-  @Output() removeProduct: EventEmitter<ProductModel> = new EventEmitter<ProductModel>();
+  @Output() increaseQuantity: EventEmitter<CartModel> = new EventEmitter<CartModel>();
+  @Output() decreaseQuantity: EventEmitter<CartModel> = new EventEmitter<CartModel>();
+  @Output() removeProduct: EventEmitter<CartModel> = new EventEmitter<CartModel>();
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onRemoveCart(cart: CartModel) {
-    this.removeCart.emit(cart);
+  onIncreaseQuantity(cart: CartModel) {
+    this.increaseQuantity.emit(cart);
   }
 
-  onAddProduct(product: ProductModel) {
-    this.addProduct.emit(product);
+  onDecreaseQuantity(cart: CartModel) {
+    this.decreaseQuantity.emit(cart);
   }
 
-  onRemoveProduct(product: ProductModel) {
-    this.removeProduct.emit(product);
+  onRemoveProduct(cart: CartModel) {
+    this.removeProduct.emit(cart);
   }
 
 }
