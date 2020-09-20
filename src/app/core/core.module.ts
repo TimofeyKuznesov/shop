@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
+import { SharedModule } from '../shared/shared.module';
 
 import { CONSTANT_SERVICE, CONSTANT_TOKEN } from './services/constant.service';
 import { GeneratorFactory, GENERATOR_TOKEN } from './services/generator.factory';
@@ -12,7 +13,7 @@ import { GeneratorService } from './services/generator.service';
     {provide: GENERATOR_TOKEN, useFactory: GeneratorFactory(10), deps: [GeneratorService]}
   ],
   imports: [
-    CommonModule
+    SharedModule
   ]
 })
 export class CoreModule { }

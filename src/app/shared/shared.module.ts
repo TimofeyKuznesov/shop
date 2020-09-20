@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { HighlightDirective } from './directives/highlight.directive';
 import { EffectDirective } from './directives/effect.directive';
@@ -8,9 +9,16 @@ import { OrderByPipe } from './pipes/order-by.pipe';
 @NgModule({
   declarations: [HighlightDirective, EffectDirective, OrderByPipe],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
-  exports: [HighlightDirective, EffectDirective, OrderByPipe]
+  exports: [
+    CommonModule,
+    FormsModule,
+    HighlightDirective,
+    EffectDirective,
+    OrderByPipe
+  ]
 })
 export class SharedModule {
 
