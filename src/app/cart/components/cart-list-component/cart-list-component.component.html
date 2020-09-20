@@ -2,7 +2,7 @@
     <div class="card-header">
         <div *ngIf="cartsInfo.total; else cartsEmpty">
             <div class="row">total products: {{cartsInfo.total}}</div>
-            <div class="row">sum: {{cartsInfo.totalSum}}</div>
+            <div class="row">sum: {{cartsInfo.totalSum | currency:'USD' }}</div>
         </div>
         <ng-template #cartsEmpty>
             You are not select product

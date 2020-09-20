@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 
-import { ProductModel } from 'src/app/products/models';
+import { Categories } from 'src/app/first-component/categories.enum';
 
 import {CartModel} from '../../models';
 
@@ -16,6 +16,9 @@ export class CartComponentComponent implements OnInit {
   @Output() increaseQuantity: EventEmitter<CartModel> = new EventEmitter<CartModel>();
   @Output() decreaseQuantity: EventEmitter<CartModel> = new EventEmitter<CartModel>();
   @Output() removeProduct: EventEmitter<CartModel> = new EventEmitter<CartModel>();
+
+  categories = Categories;
+
   constructor() { }
 
   ngOnInit(): void {

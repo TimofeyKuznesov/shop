@@ -1,7 +1,8 @@
 <div class="card" >
     <div appHighlight="GhostWhite" class="card-body">
-        <h5 class="card-title">{{cart.product.name}}</h5>
+        <h5 class="card-title">{{cart.product.name}} ({{categories[cart.product.category] | titlecase }})</h5>
         <h6 class="card-subtitle mb-2 text-muted">count: {{cart.count}}</h6>
+        <h6 class="card-subtitle mb-2 text-muted">added: {{cart.createDate | date:'medium':'':'ru'}}</h6>
         <p class="card-text">{{cart.product.description}}</p>
         <div class="btn-group" role="group">
             <button type="button" class="btn btn-primary" (click)="onIncreaseQuantity(cart)">Increase</button>

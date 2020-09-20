@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output, ChangeDetectionStrategy } from '@angular/core';
 
-import { ProductsServiceService } from '../../services/products-service.service';
+import { Categories } from 'src/app/first-component/categories.enum';
+
 import { ProductModel } from '../../models/product-model';
 
 @Component({
@@ -14,6 +15,8 @@ export class ProductComponentComponent implements OnInit {
 
   @Input() product: ProductModel;
   @Output() addProduct: EventEmitter<ProductModel> = new EventEmitter<ProductModel>();
+
+  categories = Categories;
 
   ngOnInit() {
   }
