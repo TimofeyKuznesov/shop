@@ -17,3 +17,7 @@
 15. Update CartService
 16. Create LocalStorageService, ConfigOptionsService, ConstantsService, GeneratorService 
 17. Add AboutComponent  and add effect to Application Info by click
+
+18. Use pipe for format view date, price and category
+19. Create pipe orderBy
+20. Create order for cart list
