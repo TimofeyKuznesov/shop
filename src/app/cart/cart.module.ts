@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { FormsModule } from '@angular/forms';
+
 import { SharedModule } from '../shared/shared.module';
 
 import { CartComponentComponent } from './components/cart-component/cart-component.component';
@@ -9,8 +11,9 @@ import { CartListComponentComponent } from './components/cart-list-component/car
 @NgModule({
   declarations: [CartComponentComponent, CartListComponentComponent],
   imports: [
-    CommonModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    CommonModule
   ],
   exports: [CartListComponentComponent]
 })

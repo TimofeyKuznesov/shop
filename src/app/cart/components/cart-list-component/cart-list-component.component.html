@@ -3,18 +3,22 @@
         <div *ngIf="cartsInfo.total; else cartsEmpty">
             <div class="row">total products: {{cartsInfo.total}}</div>
             <div class="row">sum: {{cartsInfo.totalSum | currency:'USD' }}</div>
+            <select class="custom-select" [(ngModel)]="filter">
+                <option value="count">count</option>
+                <option value="createDate">createDate</option>
+            </select>
+            <div class="card-body"  *ngFor="let cart of cartsInfo.carts|orderBy:filter">
+                <button type="button" class="btn btn-primary" (click)="onRemoveAllProducts($event)">Clear All</button>
+                <app-cart-component 
+                [cart]="cart"
+                (removeProduct)="onRemoveProduct($event)"
+                (decreaseQuantity)="onDecreaseQuantity($event)"
+                (increaseQuantity)="onIncreaseQuantity($event)"
+                ></app-cart-component>
+            </div>
         </div>
         <ng-template #cartsEmpty>
             You are not select product
         </ng-template>
-    </div>
-    <div class="card-body"  *ngFor="let cart of cartsInfo.carts">
-        <button type="button" class="btn btn-primary" (click)="onRemoveAllProducts($event)">Clear All</button>
-        <app-cart-component 
-        [cart]="cart"
-        (removeProduct)="onRemoveProduct($event)"
-        (decreaseQuantity)="onDecreaseQuantity($event)"
-        (increaseQuantity)="onIncreaseQuantity($event)"
-        ></app-cart-component>
     </div>
 </div>

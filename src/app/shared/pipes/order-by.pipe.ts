@@ -13,7 +13,7 @@ export class OrderByPipe<T> implements PipeTransform {
       if( typeof(an) === 'string'){
         ret = an.localeCompare(bn);
       }
-      if( typeof(an) === 'number'){
+      else {
         ret = an - bn;
       }
       return reverse ? (ret * -1) : ret;

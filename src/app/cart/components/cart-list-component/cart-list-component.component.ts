@@ -17,6 +17,7 @@ import { CartsInfoModel } from '../../models/carts-info';
 export class CartListComponentComponent implements OnInit, OnDestroy {
 
   cartsInfo: CartsInfoModel = new CartsInfoModel([]);
+  filter = 'count';
   private cartSub: Subscription;
 
   constructor(private cartServiceService: CartServiceService, private changeDetectorRef: ChangeDetectorRef) { }
