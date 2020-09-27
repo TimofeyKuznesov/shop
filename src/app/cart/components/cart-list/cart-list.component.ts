@@ -24,6 +24,7 @@ export class CartListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.cartSub = this.cartService.channel$.subscribe(cartsInfo => this.updateCartsInfo(cartsInfo));
+    this.updateCartsInfo(this.cartService.getCartInfo());
   }
 
   ngOnDestroy(): void {
@@ -33,6 +34,7 @@ export class CartListComponent implements OnInit, OnDestroy {
   updateCartsInfo(cartsInfo: CartsInfoModel){
     this.cartsInfo = cartsInfo;
     this.changeDetectorRef.detectChanges();
+    console.log(cartsInfo);
   }
 
   onAddProduct(addProduct: ProductModel) {

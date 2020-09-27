@@ -18,6 +18,7 @@ export class CartService {
   private totalQuantity  = 0;
   private totalSum = 0;
   private channel = new Subject<CartsInfoModel>();
+  private cartInfo = new CartsInfoModel([]);
   channel$ = this.channel.asObservable();
 
   constructor(private productsService: ProductsService) { }
@@ -57,10 +58,14 @@ export class CartService {
     this.cartProducts = [];
     this.updateCartData();
   }
+  getCartInfo() {
+    return this.cartInfo;
+  }
   updateCartData() {
     const total = this.cartProducts.map(({count}: CartModel) => count).reduce( (acc, price) => acc + price, 0);
     const totalSum = this.cartProducts.map(({product: {price}, count}: CartModel) => price * count).reduce( (acc, price) => acc + price, 0);
-    this.channel.next(new CartsInfoModel(this.cartProducts, total, totalSum));
+    this.cartInfo = new CartsInfoModel(this.cartProducts, total, totalSum);
+    this.channel.next(this.cartInfo);
   }
 
 }
