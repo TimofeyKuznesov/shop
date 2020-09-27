@@ -3,3 +3,4 @@ export {CONSTANT_TOKEN_NAME, CONSTANT_SERVICE, CONSTANT_TOKEN} from './constant.
 export {GENERATOR_TOKEN, GENERATOR_TOKEN_NAME, GeneratorFactory} from './generator.factory';
 export {GeneratorService} from './generator.service';
 export {LocalStorageService} from './local-storage.service';
+export {AuthService} from './auth.service';

@@ -14,29 +14,25 @@ import { CartModule } from './cart/cart.module';
 import { ProductsModule } from './products/products.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
-import { PathNotFoundComponent } from './layout/path-not-found/path-not-found.component';
-import { AdminModule } from './admin/admin.module';
 import { OrdersModule } from './orders/orders.module';
-import { AboutComponent } from './layout/components';
+import { LayoutModule } from './layout/layout.module';
 
 registerLocaleData(localeRu, 'ru');
 
 @NgModule({
   declarations: [
-    AppComponent,
-    AboutComponent,
-    PathNotFoundComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
     NgbModule,
     CoreModule,
     SharedModule,
-    SharedModule,
+    LayoutModule,
     CartModule,
     ProductsModule,
     OrdersModule,
-    AdminModule,
+    // AdminModule,
     // MUST BE LAST
     AppRoutingModule
   ],

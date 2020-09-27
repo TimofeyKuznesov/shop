@@ -1,7 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 
 
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 import { ProductModel } from 'src/app/products/models';
 
@@ -17,8 +17,8 @@ export class CartService {
   private cartProducts: Array<CartModel> = [];
   private totalQuantity  = 0;
   private totalSum = 0;
-  private channel = new Subject<CartsInfoModel>();
   private cartInfo = new CartsInfoModel([]);
+  private channel = new BehaviorSubject<CartsInfoModel>(this.cartInfo);
   channel$ = this.channel.asObservable();
 
   constructor(private productsService: ProductsService) { }
