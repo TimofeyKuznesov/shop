@@ -6,13 +6,13 @@ import { Subject } from 'rxjs';
 import { ProductModel } from 'src/app/products/models';
 
 import { CartModel } from '../models';
-import { ProductsServiceService } from '../../products/services';
-import { CartsInfoModel } from '../models/carts-info';
+import { ProductsService } from '../../products/services';
+import { CartsInfoModel } from '../models/carts-info.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CartServiceService {
+export class CartService {
 
   private cartProducts: Array<CartModel> = [];
   private totalQuantity  = 0;
@@ -20,7 +20,7 @@ export class CartServiceService {
   private channel = new Subject<CartsInfoModel>();
   channel$ = this.channel.asObservable();
 
-  constructor(private productsServiceService: ProductsServiceService) { }
+  constructor(private productsService: ProductsService) { }
 
   addProduct(product: ProductModel, quantity: number = 1) {
     const updateCart = this.cartProducts.find( cart => cart.product === product);

@@ -6,11 +6,11 @@ import {CartModel} from '../../models';
 
 @Component({
   selector: 'app-cart-component',
-  templateUrl: './cart-component.component.html',
-  styleUrls: ['./cart-component.component.scss'],
+  templateUrl: './cart.component.html',
+  styleUrls: ['./cart.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CartComponentComponent implements OnInit {
+export class CartComponent implements OnInit {
 
   @Input() cart: CartModel;
   @Output() increaseQuantity: EventEmitter<CartModel> = new EventEmitter<CartModel>();

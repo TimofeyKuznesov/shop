@@ -1,1 +1,1 @@
-export {CartServiceService} from './cart-service.service';
+export {CartService} from './cart.service';

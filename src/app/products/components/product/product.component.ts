@@ -6,11 +6,11 @@ import { ProductModel } from '../../models/product-model';
 
 @Component({
   selector: 'app-product-component',
-  templateUrl: './product-component.component.html',
-  styleUrls: ['./product-component.component.scss'],
+  templateUrl: './product.component.html',
+  styleUrls: ['./product.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProductComponentComponent implements OnInit {
+export class ProductComponent implements OnInit {
   constructor() { }
 
   @Input() product: ProductModel;

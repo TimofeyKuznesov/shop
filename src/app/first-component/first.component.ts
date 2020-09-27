@@ -4,10 +4,10 @@ import {Categories} from './categories.enum';
 
 @Component({
   selector: 'app-first-component',
-  templateUrl: './first-component.component.html',
-  styleUrls: ['./first-component.component.scss']
+  templateUrl: './first.component.html',
+  styleUrls: ['./first.component.scss']
 })
-export class FirstComponentComponent implements OnInit {
+export class FirstComponent implements OnInit {
   name: string;
   description: string;
   price: number;

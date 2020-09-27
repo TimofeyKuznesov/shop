@@ -4,26 +4,26 @@ import { Observable, Subscription } from 'rxjs';
 
 import { ProductModel } from 'src/app/products/models';
 
-import { CartServiceService } from '../../services';
+import { CartService } from '../../services';
 import { CartModel } from '../../models';
-import { CartsInfoModel } from '../../models/carts-info';
+import { CartsInfoModel } from '../../models/carts-info.model';
 
 @Component({
-  selector: 'app-cart-list-component',
-  templateUrl: './cart-list-component.component.html',
-  styleUrls: ['./cart-list-component.component.scss'],
+  selector: 'app-cart-list',
+  templateUrl: './cart-list.component.html',
+  styleUrls: ['./cart-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CartListComponentComponent implements OnInit, OnDestroy {
+export class CartListComponent implements OnInit, OnDestroy {
 
   cartsInfo: CartsInfoModel = new CartsInfoModel([]);
   filter = 'count';
   private cartSub: Subscription;
 
-  constructor(private cartServiceService: CartServiceService, private changeDetectorRef: ChangeDetectorRef) { }
+  constructor(private cartService: CartService, private changeDetectorRef: ChangeDetectorRef) { }
 
   ngOnInit() {
-    this.cartSub = this.cartServiceService.channel$.subscribe(cartsInfo => this.updateCartsInfo(cartsInfo));
+    this.cartSub = this.cartService.channel$.subscribe(cartsInfo => this.updateCartsInfo(cartsInfo));
   }
 
   ngOnDestroy(): void {
@@ -36,20 +36,20 @@ export class CartListComponentComponent implements OnInit, OnDestroy {
   }
 
   onAddProduct(addProduct: ProductModel) {
-    this.cartServiceService.addProduct(addProduct);
+    this.cartService.addProduct(addProduct);
   }
   onRemoveProduct(removeProduct: CartModel) {
-    this.cartServiceService.removeProduct(removeProduct);
+    this.cartService.removeProduct(removeProduct);
   }
 
   onIncreaseQuantity(cart: CartModel) {
-    this.cartServiceService.increaseQuantity(cart);
+    this.cartService.increaseQuantity(cart);
   }
   onDecreaseQuantity(cart: CartModel) {
-    this.cartServiceService.decreaseQuantity(cart);
+    this.cartService.decreaseQuantity(cart);
   }
 
   onRemoveAllProducts(cart: CartModel) {
-    this.cartServiceService.removeAllProducts();
+    this.cartService.removeAllProducts();
   }
 }

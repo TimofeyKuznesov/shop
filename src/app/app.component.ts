@@ -10,6 +10,6 @@ export class AppComponent implements AfterContentInit {
   title = 'shop';
 
   ngAfterContentInit() {
-    this.refTitle.nativeElement.innerHTML = this.title;
+    // this.refTitle.nativeElement.innerHTML = this.title;
   }
 }

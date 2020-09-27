@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 
 import * as faker from 'faker';
-import { Subject } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 
 import {ProductModel, Categories} from '../models';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductsServiceService {
+export class ProductsService {
 
   private products: Array<ProductModel>;
   private channel = new Subject<Array<ProductModel>>();
-  channel$ = this.channel.asObservable();
+  channel$: Observable<ProductModel[]>;
 
   constructor() {
     this.products = Array(10).fill(0).map( () => new ProductModel(
@@ -22,6 +22,6 @@ export class ProductsServiceService {
       Categories.ALL,
       Math.random() >= 0.5
     ));
-    setTimeout(() => this.channel.next(this.products), 600);
+    this.channel$ = of(this.products);
   }
 }
