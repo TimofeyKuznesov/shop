@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "name": "item1",
+        "description": "desc1",
+        "price": 100,
+        "category": 1,
+        "isAvailable": true
+    },
+    {
+        "id": 2,
+        "name": "item1",
+        "description": "desc1",
+        "price": 100,
+        "category": 1,
+        "isAvailable": true
+    },
+    {
+        "id": 3,
+        "name": "item1",
+        "description": "desc1",
+        "price": 100,
+        "category": 1,
+        "isAvailable": true
+    },
+    {
+        "id": 4,
+        "name": "item1",
+        "description": "desc1",
+        "price": 100,
+        "category": 1,
+        "isAvailable": true
+    },
+    {
+        "id": 5,
+        "name": "item1",
+        "description": "desc1",
+        "price": 100,
+        "category": 1,
+        "isAvailable": true
+    },
+    {
+        "id": 6,
+        "name": "item1",
+        "description": "desc1",
+        "price": 100,
+        "category": 1,
+        "isAvailable": true
+    },
+    {
+        "id": 7,
+        "name": "item1",
+        "description": "desc1",
+        "price": 100,
+        "category": 1,
+        "isAvailable": true
+    },
+    {
+        "id": 8,
+        "name": "item1",
+        "description": "desc1",
+        "price": 100,
+        "category": 1,
+        "isAvailable": true
+    },
+    {
+        "id": 9,
+        "name": "item1",
+        "description": "desc1",
+        "price": 100,
+        "category": 1,
+        "isAvailable": true
+    },
+    {
+        "id": 10,
+        "name": "item1",
+        "description": "desc1",
+        "price": 100,
+        "category": 1,
+        "isAvailable": true
+    }
+]

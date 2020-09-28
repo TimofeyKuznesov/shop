@@ -1,8 +1,13 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
 
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
+
+import { Router } from '@angular/router';
 
 import { ProductModel } from 'src/app/products/models';
+import { LocalStorageService } from 'src/app/core/services';
+
+import { OrderModel } from 'src/app/orders/models/order';
 
 import { CartService } from '../../services';
 import { CartModel } from '../../models';
@@ -20,7 +25,12 @@ export class CartListComponent implements OnInit, OnDestroy {
   filter = 'count';
   private cartSub: Subscription;
 
-  constructor(private cartService: CartService, private changeDetectorRef: ChangeDetectorRef) { }
+  constructor(
+    private cartService: CartService,
+    private localStorageService: LocalStorageService,
+    private changeDetectorRef: ChangeDetectorRef,
+    private router: Router
+    ) { }
 
   ngOnInit() {
     this.cartSub = this.cartService.channel$.subscribe(cartsInfo => this.updateCartsInfo(cartsInfo));
@@ -50,7 +60,13 @@ export class CartListComponent implements OnInit, OnDestroy {
     this.cartService.decreaseQuantity(cart);
   }
 
-  onRemoveAllProducts(cart: CartModel) {
+  onRemoveAllProducts() {
     this.cartService.removeAllProducts();
+  }
+
+  onMakeOrder() {
+    this.localStorageService.setItem('order', new OrderModel(this.cartsInfo));
+    this.cartService.removeAllProducts();
+    this.router.navigateByUrl('/order');
   }
 }

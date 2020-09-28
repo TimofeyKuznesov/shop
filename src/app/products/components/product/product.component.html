@@ -11,5 +11,13 @@
         >
             Add
         </button>
+        <button *ngIf="authService.channel | async"
+            type="button"
+            class="btn btn-primary"
+            routerLink="/admin/product/edit/{{product.id}}"
+            [disabled]="!product.isAvailable"
+        >
+            edit
+        </button>
     </div>
 </div>

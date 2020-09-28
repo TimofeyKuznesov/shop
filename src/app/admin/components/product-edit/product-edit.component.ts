@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 import { ProductModel } from 'src/app/products/models';
@@ -23,8 +24,13 @@ export class ProductEditComponent implements OnInit {
     this.route.paramMap
       .pipe(
         switchMap((params: ParamMap) => {
-          return this.productService.getProduct(params.get('itemID'));
+          const productID = params.get('productID');
+          return productID ? this.productService.getProduct(productID) : of({} as ProductModel);
         }))
       .subscribe(product => this.product = product );
+  }
+
+  onSaveProduct() {
+
   }
 }

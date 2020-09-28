@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output, ChangeDetectionStrategy } from '@angular/core';
 
+import { AuthService } from 'src/app/core/services';
+
 import { Categories } from 'src/app/first-component/categories.enum';
 
 import { ProductModel } from '../../models/product-model';
@@ -11,13 +13,14 @@ import { ProductModel } from '../../models/product-model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductComponent implements OnInit {
-  constructor() { }
 
   @Input() product: ProductModel;
   @Output() addProduct: EventEmitter<ProductModel> = new EventEmitter<ProductModel>();
 
   categories = Categories;
+  constructor(public authService: AuthService){
 
+  }
   ngOnInit() {
   }
 

@@ -1,1 +1,11 @@
-<p>order-item works!</p>
+<div class="card" >
+    <div appHighlight="GhostWhite" class="card-body">
+        <h5 class="card-title">{{order.createDate | date:'medium':'':'ru'}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">All items count: {{order.quantity}}</h6>
+        <h6 class="card-subtitle mb-2 text-muted">Total sum: {{order.sum | currency:'USD' }}</h6>
+        <p *ngFor="let cart of order.carts" class="card-text">
+            {{cart.product.name}}: {{cart.count}}
+        </p>
+        
+    </div>
+</div>

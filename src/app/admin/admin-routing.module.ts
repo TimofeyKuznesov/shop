@@ -17,7 +17,7 @@ const routes: Routes = [{
       component: ProductEditComponent,
     },
     {
-      path: 'product/edit/:itemID',
+      path: 'product/edit/:productID',
       component: ProductEditComponent,
       resolve: {
         product: ProductResolveGuard
