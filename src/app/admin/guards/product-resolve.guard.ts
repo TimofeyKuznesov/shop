@@ -19,9 +19,9 @@ export class ProductResolveGuard implements Resolve<ProductModel> {
   resolve(route: ActivatedRouteSnapshot): Observable<ProductModel | null> {
     console.log('ProductResolve Guard is called');
 
-    const id = +route.paramMap.get('id');
+    const id = route.paramMap.get('productID');
 
-    return this.productService.getProduct(id.toString()).pipe(
+    return this.productService.getProduct(id).pipe(
       delay(2000),
       map((item: ProductModel) => {
         if (item) {

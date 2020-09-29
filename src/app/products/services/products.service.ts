@@ -24,7 +24,7 @@ export class ProductsService {
   getAllProducts(): Observable<Array<ProductModel>> {
     return this.channel$;
   }
-  getProduct(id: string): Observable<ProductModel> {
+  getProduct(id: string | number): Observable<ProductModel> {
     return this.getAllProducts().pipe(
       map(x => x.filter(item => item.id === +id)),
       take(1),
