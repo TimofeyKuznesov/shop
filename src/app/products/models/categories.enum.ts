@@ -1,4 +1,6 @@
 export enum Categories {
     ALL = 1,
-    OTHER
+    OTHER,
+    MONITOR,
+    MOUSE
 }
