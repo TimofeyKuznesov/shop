@@ -1,4 +1,4 @@
-<div class="card" >
+<div class="card" *ngIf="order">
     <div appHighlight="GhostWhite" class="card-body">
         <h5 class="card-title">{{order.createDate | date:'medium':'':'ru'}}</h5>
         <h6 class="card-subtitle mb-2 text-muted">All items count: {{order.quantity}}</h6>

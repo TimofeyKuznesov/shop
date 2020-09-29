@@ -1,1 +1,7 @@
-<app-order-item [order]="order"></app-order-item>
+<ng-container *ngIf="order; else elseTemplate">
+    <app-order-item [order]="order"></app-order-item>
+    <button (click)="onMakeOrder()">Make order</button>
+</ng-container>
+<ng-template #elseTemplate>
+    You can add product
+</ng-template>

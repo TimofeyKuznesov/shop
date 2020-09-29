@@ -13,9 +13,17 @@
         <li class="nav-item" routerLinkActive="active">
           <a class="nav-link" routerLink="/order">Order</a>
         </li>
-        <li *ngIf="authService.channel$ | async" class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="/admin">Admin</a>
-        </li>
+        <!-- <div class="col" *ngIf="authService.channel$ | async" routerLinkActive="active"> -->
+        <div class="col" routerLinkActive="active">
+          <div ngbDropdown class="d-inline-block">
+            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Admin</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <button ngbDropdownItem routerLink="/admin/products" routerLinkActive="active">Products</button>
+              <button ngbDropdownItem routerLink="/admin/product/add" routerLinkActive="active">Add product</button>
+              <button ngbDropdownItem routerLink="/admin/orders" routerLinkActive="active">Orders</button>
+            </div>
+          </div>
+        </div>
         <li class="nav-item" routerLinkActive="active">
           <a class="nav-link" routerLink="/about">About</a>
         </li>
