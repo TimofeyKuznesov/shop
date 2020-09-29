@@ -21,3 +21,9 @@
 18. Use pipe for format view date, price and category
 19. Create pipe orderBy
 20. Create order for cart list
+
+21. Add routing
+22. Add order module
+23. Add auth
+24. Add save status login and carts list in localStore
+25. Add guards

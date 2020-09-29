@@ -10,7 +10,7 @@ export class OrderByPipe<T> implements PipeTransform {
       const an = a[name];
       const bn = b[name];
       let ret = 0;
-      if( typeof(an) === 'string'){
+      if ( typeof(an) === 'string'){
         ret = an.localeCompare(bn);
       }
       else {

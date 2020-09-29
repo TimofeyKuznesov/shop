@@ -15,10 +15,8 @@ export class OrdersService {
   orders$ = this.orders.asObservable();
 
   constructor() { }
-  makeOrder(cartInfo: CartsInfoModel){
-    const newOrder = new OrderModel(cartInfo);
-    this.orderList = [...this.orderList, newOrder];
+  addOrder(order: OrderModel){
+    this.orderList = [...this.orderList, order];
     this.orders.next(this.orderList);
-    return newOrder;
   }
 }

@@ -9,7 +9,7 @@
             </select>
             <div class="card-body"  *ngFor="let cart of cartsInfo.carts|orderBy:filter">
                 <button type="button" class="btn btn-primary" (click)="onRemoveAllProducts()">Clear All</button>
-                <button type="button" class="btn btn-primary" (click)="onMakeOrder()">Make order</button>
+                <button type="button" class="btn btn-primary" (click)="onMakeOrder()">Goto make order</button>
                 <app-cart-component 
                 [cart]="cart"
                 (removeProduct)="onRemoveProduct($event)"
