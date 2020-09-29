@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { delay, tap } from 'rxjs/operators';
 
+import { LocalStorageService } from './local-storage.service';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,6 +14,10 @@ export class AuthService {
 
   // store the URL so we can redirect after logging in
   redirectUrl: string;
+
+  constructor(private localStoreService: LocalStorageService){
+    this.updateStatus(this.localStoreService.getItem('isLoggedIn'));
+  }
 
   login() {
     this.updateStatus(true);
@@ -24,6 +30,7 @@ export class AuthService {
   private updateStatus(val: boolean) {
     console.log('update status login:', val);
     this.isLoggedIn = val;
+    this.localStoreService.setItem('isLoggedIn', val);
     this.channel.next(val);
     return val;
   }
