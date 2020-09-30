@@ -1,0 +1,85 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "Dell P2018H",
+            "description": "20\"",
+            "price": 154,
+            "category": 3,
+            "isAvailable": true
+        },
+        {
+            "id": 2,
+            "name": "Dell P2219H",
+            "description": "Dual Monitor Bundle: P2219H without stand and with MDA20",
+            "price": 333,
+            "category": 3,
+            "isAvailable": false
+        },
+        {
+            "id": 3,
+            "name": "Dell S2421H",
+            "description": "24\"",
+            "price": 233,
+            "category": 3,
+            "isAvailable": true
+        },
+        {
+            "id": 4,
+            "name": "Dell S2721D",
+            "description": " 27\"",
+            "price": 100,
+            "category": 3,
+            "isAvailable": true
+        },
+        {
+            "id": 5,
+            "name": "Dell S2721QS",
+            "description": "27\" 4K UHD",
+            "price": 200,
+            "category": 3,
+            "isAvailable": true
+        },
+        {
+            "id": 6,
+            "name": "Acer SB220Q",
+            "description": "Full HD (1920 x 1080) IPS (black)",
+            "price": 99,
+            "category": 3,
+            "isAvailable": true
+        },
+        {
+            "id": 7,
+            "name": "LG 34WN80C-B",
+            "description": "21:9 Curved UltraWide WQHD IPS",
+            "price": 198,
+            "category": 3,
+            "isAvailable": true
+        },
+        {
+            "id": 8,
+            "name": "LG 27UN850-W",
+            "description": "Ultrafine UHD (3840 x 2160) IPS Display",
+            "price": 299,
+            "category": 3,
+            "isAvailable": true
+        },
+        {
+            "id": 9,
+            "name": "HP M27ha",
+            "description": "Full HD Monitor (1920 x 1080p) - IPS Panel and Built-in Audio",
+            "price": 350,
+            "category": 3,
+            "isAvailable": true
+        },
+        {
+            "id": 10,
+            "name": "AOC I1601FWUX",
+            "description": " USB-C powered portable monitor",
+            "price": 255,
+            "category": 3,
+            "isAvailable": true
+        }
+    ],
+    "orders": []
+}

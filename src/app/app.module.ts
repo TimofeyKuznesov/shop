@@ -1,5 +1,6 @@
 
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -33,6 +34,7 @@ registerLocaleData(localeRu, 'ru');
     ProductsModule,
     OrdersModule,
     // AdminModule,
+    HttpClientModule,
     // MUST BE LAST
     AppRoutingModule
   ],

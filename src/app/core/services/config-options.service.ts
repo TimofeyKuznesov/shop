@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { ConfigOptionsModel } from '../model/config-options-model';
+import { ConfigOptionsModel } from '../model';
 
 @Injectable({
   providedIn: 'root'

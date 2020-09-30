@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { delay, tap } from 'rxjs/operators';
 
 import { LocalStorageService } from './local-storage.service';
 

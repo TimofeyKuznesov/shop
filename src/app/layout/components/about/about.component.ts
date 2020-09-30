@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit, Optional } from '@angular/core';
 
-import { ConfigOptionsModel } from 'src/app/core/model/config-options-model';
+import { ConfigOptionsModel } from 'src/app/core/model';
 
 import { ConfigOptionsService } from 'src/app/core/services/config-options.service';
 import { ConstantsService, CONSTANT_TOKEN } from 'src/app/core/services/constant.service';
