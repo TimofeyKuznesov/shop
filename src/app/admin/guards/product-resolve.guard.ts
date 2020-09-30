@@ -11,32 +11,27 @@ import { ProductsService } from 'src/app/products/services';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductResolveGuard implements Resolve<ProductModel> {
+export class ProductResolveGuard implements Resolve<ProductModel | void> {
   constructor(
     private productService: ProductsService,
     private router: Router
   ) {}
-  resolve(route: ActivatedRouteSnapshot): Observable<ProductModel | null> {
+  resolve(route: ActivatedRouteSnapshot): Promise<ProductModel | void> {
     console.log('ProductResolve Guard is called');
 
     const id = route.paramMap.get('productID');
 
-    return this.productService.getProduct(id).pipe(
-      delay(2000),
-      map((item: ProductModel) => {
+    return this.productService.getProduct(id).then(
+      (item: ProductModel) => {
         if (item) {
           return item;
         } else {
           this.router.navigate(['/admin']);
           return null;
         }
-      }),
-      take(1),
-      catchError(() => {
-        this.router.navigate(['/admin']);
-        return of(null);
       })
-    );
+      .catch(() => {
+        this.router.navigate(['/admin']);
+      });
   }
-
 }

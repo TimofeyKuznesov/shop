@@ -18,19 +18,23 @@ export class ProductsService {
   channel$: Observable<ProductModel[]> = this.channel.asObservable();
 
   constructor(private backendService: BackendService) {
-    this.backendService.getProducts().then( products => {
-      this.products = [...products as Array<ProductModel>];
-      this.channel.next(this.products);
-    });
+  this.updateProductsFromBackend();
   }
   getAllProducts(): Observable<Array<ProductModel>> {
     return this.channel$;
   }
-  getProduct(id: string | number): Observable<ProductModel> {
-    return this.getAllProducts().pipe(
-      map(x => x.filter(item => item.id === +id)),
-      take(1),
-      switchMap(x => of(...x))
-    );
+  getProduct(id: string | number): Promise<ProductModel> {
+    return this.backendService.getProduct(id);
+  }
+  updateProduct(product: ProductModel) {
+    this.backendService.updateProduct(product);
+    this.updateProductsFromBackend();
+  }
+
+  private updateProductsFromBackend() {
+    this.backendService.getProducts().then( products => {
+      this.products = [...products as Array<ProductModel>];
+      this.channel.next(this.products);
+    });
   }
 }

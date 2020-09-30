@@ -28,6 +28,11 @@ export class BackendService {
       .catch(this.handleError);
   }
 
+  getProduct(id: number | string){
+    return this.httpClient.get(`${this.appConfig.productsUrl}/${id}`).toPromise()
+      .then(response => response as ProductModel)
+      .catch(this.handleError);
+  }
   addProduct(product: ProductModel) {
     const options = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -38,8 +43,18 @@ export class BackendService {
       .catch(this.handleError);
   }
 
+  updateProduct(product: ProductModel) {
+    const options = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+    const body = JSON.stringify(product);
+    return this.httpClient.put(`${this.appConfig.productsUrl}/${product.id}`, body, options).toPromise()
+      .then(response => response as ProductModel)
+      .catch(this.handleError);
+  }
+
   delProduct(product: ProductModel) {
-    return this.httpClient.delete(this.appConfig.productsUrl + '/' + product.id).toPromise()
+    return this.httpClient.delete(`${this.appConfig.productsUrl}/${product.id}`).toPromise()
     .then(response => response as ProductModel)
     .catch(this.handleError);
   }
