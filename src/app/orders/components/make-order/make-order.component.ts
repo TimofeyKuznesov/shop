@@ -1,4 +1,7 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 import { LocalStorageService } from 'src/app/core/services';
 
@@ -11,17 +14,26 @@ import { OrdersService } from '../../services';
   styleUrls: ['./make-order.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MakeOrderComponent implements OnInit {
+export class MakeOrderComponent implements OnInit, OnDestroy {
 
-  constructor(private localStoreService: LocalStorageService, private ordersService: OrdersService) { }
+  sub: Subscription;
+  constructor(
+    private localStoreService: LocalStorageService,
+    private ordersService: OrdersService,
+    private router: Router,
+    private location: Location,
+    ) { }
 
   ngOnInit(): void {
+  }
+  ngOnDestroy() {
+    this.sub?.unsubscribe();
   }
   get order(): OrderModel {
     return this.localStoreService.getItem('order');
   }
   onMakeOrder() {
-    this.ordersService.addOrder(this.order);
+    this.sub = this.ordersService.addOrder(this.order).subscribe();
     this.localStoreService.removeItem('order');
   }
 }

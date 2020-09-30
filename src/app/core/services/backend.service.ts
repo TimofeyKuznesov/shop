@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, map, share, tap } from 'rxjs/operators';
 
 import { OrderModel } from 'src/app/orders/models/order';
 
@@ -44,6 +44,9 @@ export class BackendService {
   }
 
   updateProduct(product: ProductModel) {
+    if (!product.id) {
+      return this.addProduct(product);
+    }
     const options = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
@@ -60,9 +63,9 @@ export class BackendService {
   }
 
   getOrders() {
-    return this.httpClient.get(this.appConfig.ordersUrl)
+    return this.httpClient.get<Array<OrderModel>>(this.appConfig.ordersUrl)
       .pipe(
-        map(response => response || [] as Array<OrderModel>),
+        share(),
         catchError(this.handleErrorObserver)
       );
   }
@@ -72,9 +75,10 @@ export class BackendService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
     const body = JSON.stringify(order);
+    console.log(body);
     return this.httpClient.post(this.appConfig.ordersUrl, body, options)
       .pipe(
-        tap(response => {console.log(response); }),
+        map(response => response as OrderModel),
         catchError(this.handleErrorObserver)
       );
   }

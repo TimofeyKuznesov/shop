@@ -28,6 +28,11 @@ export class ProductEditComponent implements OnInit {
   }
 
   onSaveProduct() {
-    this.productService.updateProduct(this.product);
+    this.productService.updateProduct(this.product)
+      .then(response => {
+        if (!this.product.id){
+          this.router.navigateByUrl(`/admin/product/edit/${response.id}`);
+        }
+      });
   }
 }

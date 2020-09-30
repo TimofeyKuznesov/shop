@@ -4,10 +4,12 @@ import { Subscription } from 'rxjs';
 
 import { Router } from '@angular/router';
 
+import {OrdersService} from 'src/app/orders/services';
+
 import { ProductModel } from 'src/app/products/models';
 import { LocalStorageService } from 'src/app/core/services';
 
-import { OrderModel } from 'src/app/orders/models/order';
+import { OrderModel } from 'src/app/orders/models';
 
 import { CartService } from '../../services';
 import { CartModel } from '../../models';
@@ -29,7 +31,8 @@ export class CartListComponent implements OnInit, OnDestroy {
     private cartService: CartService,
     private localStorageService: LocalStorageService,
     private changeDetectorRef: ChangeDetectorRef,
-    private router: Router
+    private router: Router,
+    private ordersService: OrdersService
     ) { }
 
   ngOnInit() {
@@ -65,7 +68,9 @@ export class CartListComponent implements OnInit, OnDestroy {
   }
 
   onMakeOrder() {
-    this.localStorageService.setItem('order', new OrderModel(this.cartsInfo));
+    const order = new OrderModel(this.cartsInfo);
+    this.localStorageService.setItem('order', order);
+    this.ordersService.addOrder(order);
     this.cartService.removeAllProducts();
     this.router.navigateByUrl('/order');
   }

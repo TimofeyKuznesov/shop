@@ -26,9 +26,10 @@ export class ProductsService {
   getProduct(id: string | number): Promise<ProductModel> {
     return this.backendService.getProduct(id);
   }
-  updateProduct(product: ProductModel) {
-    this.backendService.updateProduct(product);
+  async updateProduct(product: ProductModel) {
+    const response = await this.backendService.updateProduct(product);
     this.updateProductsFromBackend();
+    return response;
   }
 
   private updateProductsFromBackend() {

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 import { CartsInfoModel } from 'src/app/cart/models';
+import { BackendService } from 'src/app/core/services';
 
 import { OrderModel } from '../models/order';
 
@@ -10,13 +11,12 @@ import { OrderModel } from '../models/order';
 })
 export class OrdersService {
 
-  private orderList: Array<OrderModel> = [];
-  private orders = new BehaviorSubject<Array<OrderModel>>(this.orderList);
-  orders$ = this.orders.asObservable();
+  constructor(private backendService: BackendService) { }
 
-  constructor() { }
+  getAllOrders() {
+    return this.backendService.getOrders();
+  }
   addOrder(order: OrderModel){
-    this.orderList = [...this.orderList, order];
-    this.orders.next(this.orderList);
+    return this.backendService.addOrder(order);
   }
 }
