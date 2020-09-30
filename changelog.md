@@ -27,3 +27,8 @@
 23. Add auth
 24. Add save status login and carts list in localStore
 25. Add guards
+
+26. Add json-server
+27. Implemented working with products with server as promise
+28. Implemented working with orders with server as observer
+29. Add interceptor for login time requests to orders
