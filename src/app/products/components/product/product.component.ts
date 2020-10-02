@@ -18,6 +18,7 @@ export class ProductComponent implements OnInit {
   @Output() addProduct: EventEmitter<ProductModel> = new EventEmitter<ProductModel>();
 
   categories = Categories;
+  //  ок, но я бы попробовал тут избавиться от зависимости и получить эту информацию от родительского компонента
   constructor(public authService: AuthService){
 
   }
