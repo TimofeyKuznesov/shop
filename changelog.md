@@ -32,3 +32,5 @@
 27. Implemented working with products with server as promise
 28. Implemented working with orders with server as observer
 29. Add interceptor for login time requests to orders
+
+30. Apply recommendations.

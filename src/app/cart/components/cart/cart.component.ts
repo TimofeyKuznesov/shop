@@ -24,16 +24,16 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onIncreaseQuantity(cart: CartModel) {
-    this.increaseQuantity.emit(cart);
+  onIncreaseQuantity() {
+    this.increaseQuantity.emit(this.cart);
   }
 
-  onDecreaseQuantity(cart: CartModel) {
-    this.decreaseQuantity.emit(cart);
+  onDecreaseQuantity() {
+    this.decreaseQuantity.emit(this.cart);
   }
 
-  onRemoveProduct(cart: CartModel) {
-    this.removeProduct.emit(cart);
+  onRemoveProduct() {
+    this.removeProduct.emit(this.cart);
   }
 
 }

@@ -15,9 +15,9 @@ import { ProductModel } from '../../models/product-model';
 export class ProductComponent implements OnInit {
 
   @Input() product: ProductModel;
+  @Input() category: Categories;
   @Output() addProduct: EventEmitter<ProductModel> = new EventEmitter<ProductModel>();
 
-  categories = Categories;
   constructor(public authService: AuthService){
 
   }

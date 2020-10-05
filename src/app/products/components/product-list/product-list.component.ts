@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { CartService } from 'src/app/cart/services';
 
 import { ProductsService } from '../../services/products.service';
-import { ProductModel } from '../../models';
+import { Categories, ProductModel } from '../../models';
 
 @Component({
   selector: 'app-product-list',
@@ -16,6 +16,7 @@ import { ProductModel } from '../../models';
 export class ProductListComponent implements OnInit {
 
   products$: Observable<Array<ProductModel>>;
+  categories = Categories;
   constructor(
       public productsService: ProductsService,
       private cartService: CartService,
