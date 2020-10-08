@@ -1,4 +1,4 @@
-<div class="container" *ngFor="let product of products$|async|orderBy:'name'">
+<div class="container" *ngFor="let product of (products$|async).products">
     <app-product-component [product]="product" [category]="categories[product.category]" (addProduct)="onAddProduct($event)">
     </app-product-component>
 </div>

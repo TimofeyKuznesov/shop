@@ -34,3 +34,9 @@
 29. Add interceptor for login time requests to orders
 
 30. Apply recommendations.
+
+31. Add ngrx for products
+32. Add @ngrx/router-store
+33. Use ngrx effects for navigation in products components.
+34. Update resolve product guard
+35. Add load products in CanActive guard

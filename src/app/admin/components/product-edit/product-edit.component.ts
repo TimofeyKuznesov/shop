@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
+
+import { AppState, ProductsActions, selectProductByUrl } from 'src/app/core/@ngrx';
 
 import { ProductModel } from 'src/app/products/models';
 
@@ -17,22 +20,16 @@ export class ProductEditComponent implements OnInit {
   constructor(
     private productService: ProductsService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private store: Store<AppState>
     ) { }
 
   ngOnInit(): void {
-    this.route.data.pipe(
-      map(({product}) => product)
-    )
+    this.store.select(selectProductByUrl)
       .subscribe(product => this.product = {...product} );
   }
 
   onSaveProduct() {
-    this.productService.updateProduct(this.product)
-      .then(response => {
-        if (!this.product.id){
-          this.router.navigateByUrl(`/admin/product/edit/${response.id}`);
-        }
-      });
+    this.store.dispatch(ProductsActions.updateProduct({product: this.product}));
   }
 }

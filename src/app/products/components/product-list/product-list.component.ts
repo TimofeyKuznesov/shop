@@ -2,7 +2,11 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 
 import { Observable } from 'rxjs';
 
+import { select, Store } from '@ngrx/store';
+
 import { CartService } from 'src/app/cart/services';
+
+import { AppState, ProductsActions, ProductsState } from 'src/app/core/@ngrx';
 
 import { ProductsService } from '../../services/products.service';
 import { Categories, ProductModel } from '../../models';
@@ -15,16 +19,18 @@ import { Categories, ProductModel } from '../../models';
 })
 export class ProductListComponent implements OnInit {
 
-  products$: Observable<Array<ProductModel>>;
+  products$: Observable<ProductsState>;
   categories = Categories;
   constructor(
       public productsService: ProductsService,
       private cartService: CartService,
-      private changeDetectorRef: ChangeDetectorRef
+      private changeDetectorRef: ChangeDetectorRef,
+      private store: Store<AppState>
     ) { }
 
   ngOnInit() {
-    this.products$ = this.productsService.channel$;
+    this.products$ = this.store.pipe(select('products'));
+    this.store.dispatch(ProductsActions.loadProducts());
   }
 
   onAddProduct(product: ProductModel) {

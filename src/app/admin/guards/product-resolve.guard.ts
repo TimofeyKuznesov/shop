@@ -1,37 +1,55 @@
 import { Injectable } from '@angular/core';
-import { Resolve, ActivatedRouteSnapshot, Router } from '@angular/router';
+import { Resolve, ActivatedRouteSnapshot, Router, CanActivate } from '@angular/router';
+import { select, Store } from '@ngrx/store';
 
 import { Observable, of } from 'rxjs';
-import { map, catchError, take, delay } from 'rxjs/operators';
+import { map, catchError, take, delay, tap, filter, first } from 'rxjs/operators';
+
+import { AppState, RouterActions, selectProductByUrl, selectProductsLoaded, ProductsActions } from 'src/app/core/@ngrx';
 
 import { ProductModel } from 'src/app/products/models';
-
-import { ProductsService } from 'src/app/products/services';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductResolveGuard implements Resolve<ProductModel | void> {
+export class ProductResolveGuard implements Resolve<ProductModel | void>, CanActivate {
   constructor(
-    private productService: ProductsService,
-    private router: Router
+    private store: Store<AppState>
   ) {}
-  resolve(route: ActivatedRouteSnapshot): Promise<ProductModel | void> {
+  resolve(route: ActivatedRouteSnapshot): Observable<ProductModel> {
     console.log('ProductResolve Guard is called');
 
-    const id = route.paramMap.get('productID');
-
-    return this.productService.getProduct(id).then(
-      (item: ProductModel) => {
-        if (item) {
-          return item;
+    return this.store.select(selectProductByUrl).pipe(
+      map( (product: ProductModel | void) => {
+        if (product) {
+          return product;
         } else {
-          this.router.navigate(['/admin']);
+          this.store.dispatch(RouterActions.go({
+            path: ['/admin']
+          }));
           return null;
         }
+      }),
+      take(1),
+      catchError(() => {
+        this.store.dispatch(RouterActions.go({
+          path: ['/admin']
+        }));
+        return of(null);
       })
-      .catch(() => {
-        this.router.navigate(['/admin']);
-      });
+    );
+  }
+
+  canActivate(): Observable<boolean> {
+    return this.store.pipe(
+      select(selectProductsLoaded),
+      tap(loaded => {
+        if (!loaded) {
+          this.store.dispatch(ProductsActions.loadProducts());
+        }
+      }),
+      filter(loaded => loaded),
+      first()
+    );
   }
 }

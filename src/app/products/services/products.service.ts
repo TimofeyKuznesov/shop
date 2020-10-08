@@ -28,14 +28,13 @@ export class ProductsService {
   }
   async updateProduct(product: ProductModel) {
     const response = await this.backendService.updateProduct(product);
-    this.updateProductsFromBackend();
+    await this.updateProductsFromBackend();
     return response;
   }
 
-  private updateProductsFromBackend() {
-    this.backendService.getProducts().then( products => {
-      this.products = [...products as Array<ProductModel>];
-      this.channel.next(this.products);
-    });
+  private async updateProductsFromBackend() {
+    const products = await this.backendService.getProducts();
+    this.products = [...(products as Array<ProductModel>)];
+    this.channel.next(this.products);
   }
 }

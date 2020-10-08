@@ -18,6 +18,7 @@ import { CoreModule } from './core/core.module';
 import { OrdersModule } from './orders/orders.module';
 import { LayoutModule } from './layout/layout.module';
 import { TimingInterceptor } from './core/interceptors';
+import { RootStoreModule } from './core/@ngrx/root-store.module';
 
 registerLocaleData(localeRu, 'ru');
 
@@ -36,9 +37,10 @@ registerLocaleData(localeRu, 'ru');
     OrdersModule,
     // AdminModule,
     HttpClientModule,
+    RootStoreModule,
     // MUST BE LAST
     AppRoutingModule
-  ],
+    ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: TimingInterceptor,

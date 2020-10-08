@@ -29,6 +29,7 @@ const routes: Routes = [{
     {
       path: 'product/edit/:productID',
       component: ProductEditComponent,
+      canActivate: [ProductResolveGuard],
       resolve: {
         product: ProductResolveGuard
       }
