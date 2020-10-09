@@ -40,3 +40,8 @@
 33. Use ngrx effects for navigation in products components.
 34. Update resolve product guard
 35. Add load products in CanActive guard
+
+36. Add reactive form for order request
+37. Add customer validator
+37. Add phones as Array field
+38. Add support add and remove additional phones

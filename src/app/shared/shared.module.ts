@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HighlightDirective } from './directives/highlight.directive';
 import { EffectDirective } from './directives/effect.directive';
@@ -10,14 +10,16 @@ import { OrderByPipe } from './pipes/order-by.pipe';
   declarations: [HighlightDirective, EffectDirective, OrderByPipe],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     CommonModule,
     FormsModule,
     HighlightDirective,
     EffectDirective,
-    OrderByPipe
+    OrderByPipe,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule {

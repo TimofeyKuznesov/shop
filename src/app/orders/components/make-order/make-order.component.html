@@ -1,5 +1,6 @@
 <ng-container *ngIf="order; else elseTemplate">
     <app-order-item [order]="order"></app-order-item>
+    <app-order-form></app-order-form>
     <button (click)="onMakeOrder()">Make order</button>
 </ng-container>
 <ng-template #elseTemplate>
