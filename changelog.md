@@ -45,3 +45,9 @@
 37. Add customer validator
 37. Add phones as Array field
 38. Add support add and remove additional phones
+
+39. Add unit tests for product and product list
+40. Add unit test for order pipe
+41. Add unit test for localService
+42. Add unit test for app.component
+43. Add coverage report

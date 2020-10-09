@@ -10,7 +10,12 @@ export class LocalStorageService {
     window.localStorage.setItem(key, JSON.stringify(value));
   }
   getItem<T>(key: string): T {
-    return JSON.parse(window.localStorage.getItem(key));
+    const value = window.localStorage.getItem(key);
+    try {
+      return value && JSON.parse(value);
+    } catch (error) {
+      return undefined;
+    }
   }
   removeItem(key: string) {
     window.localStorage.removeItem(key);
