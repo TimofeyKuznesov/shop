@@ -25,6 +25,8 @@ export class ProductEditComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    // в какой-то момент времени, мы покинем этот компонент, значит надо отписаться,
+    // так как стор - это у нас бесконечный поток
     this.store.select(selectProductByUrl)
       .subscribe(product => this.product = {...product} );
   }

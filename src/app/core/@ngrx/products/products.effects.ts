@@ -23,6 +23,7 @@ export class ProductsEffects {
   getProducts$: Observable<Action> = createEffect(() =>
     this.actions$.pipe(
       ofType(ProductsActions.loadProducts),
+      // тут лучше switchMap
       concatMap( action => this.productsService.getAllProducts().pipe(
         map(products => ProductsActions.loadProductsSuccess({products})),
         // catchError( error => {ProductsActions.loadProductsFailure({error})})
@@ -34,6 +35,7 @@ export class ProductsEffects {
   updateProduct$: Observable<Action> = createEffect(() =>
     this.actions$.pipe(
       ofType(ProductsActions.updateProduct),
+      // тут лучше concatMap
       switchMap(
           ({product}) => this.productsService.updateProduct(product)
             .then((response) => {
