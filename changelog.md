@@ -51,3 +51,11 @@
 41. Add unit test for localService
 42. Add unit test for app.component
 43. Add coverage report
+
+Эти зависимости сами установились при создании проекта или вы доставляли самостоятельно?
+"@angular-eslint/builder": "0.3.0-beta.1",
+    "@angular-eslint/eslint-plugin": "0.3.0-beta.1",
+    "@angular-eslint/eslint-plugin-template": "0.3.0-beta.1",
+    "@angular-eslint/schematics": "^0.3.0-beta.1",
+    "@angular-eslint/template-parser": "0.3.0-beta.1",
+Спасибо за выполненные задания!

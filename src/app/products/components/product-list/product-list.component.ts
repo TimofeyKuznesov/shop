@@ -24,7 +24,7 @@ export class ProductListComponent implements OnInit {
   constructor(
       public productsService: ProductsService,
       private cartService: CartService,
-      private changeDetectorRef: ChangeDetectorRef,
+      private changeDetectorRef: ChangeDetectorRef, // ?
       private store: Store<AppState>
     ) { }
 
